@@ -6,6 +6,21 @@ interface Props {
 
 export const styles = {
   global: ({ colorMode }: Props) => ({
+    "*": {
+      "&::-webkit-scrollbar": {
+        w: "8px",
+        h: "8px",
+        borderRadius: "12px",
+        bg: colorMode === "light" ? "gray.300" : "gray.700",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        w: "8px",
+        h: "8px",
+        borderRadius: "12px",
+        bg: colorMode === "light" ? "gray.400" : "gray.600",
+        cursor: "default",
+      },
+    },
     html: {
       scrollBehavior: "smooth",
     },
