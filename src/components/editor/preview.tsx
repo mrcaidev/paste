@@ -16,7 +16,7 @@ function PreviewComponent({ md }: Props) {
         as="article"
         dangerouslySetInnerHTML={html}
         h="100%"
-        p="10px 20px"
+        p="10px 30px"
         bg={bg}
         shadow="lg"
         rounded="md"

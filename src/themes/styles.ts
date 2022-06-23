@@ -63,6 +63,7 @@ export const styles = {
       color: "gray.500",
     },
     hr: {
+      borderColor: "gray.500",
       my: 2,
     },
     ol: {
@@ -74,10 +75,19 @@ export const styles = {
     code: {
       px: 2,
       bg: colorMode === "light" ? "gray.300" : "gray.700",
+      fontFamily:
+        "Fira Code, Ubuntu Mono, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace",
       borderRadius: "md",
     },
     svg: {
       fill: "currentColor",
+    },
+    pre: {
+      code: {
+        display: "block",
+        p: "10px 15px",
+        overflowX: "auto",
+      },
     },
   }),
 };

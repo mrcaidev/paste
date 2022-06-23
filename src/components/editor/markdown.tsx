@@ -20,9 +20,10 @@ function MarkdownComponent({ md, setMd }: Props) {
         value={md}
         onChange={handleMdChange}
         placeholder="Write some markdown here!"
-        resize="horizontal"
+        resize="none"
         h="100%"
         p="20px"
+        fontFamily="Fira Code, Ubuntu Mono, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace"
         bg={bg}
         shadow="lg"
       />
