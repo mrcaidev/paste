@@ -7,16 +7,17 @@ interface Props {
 export const styles = {
   global: ({ colorMode }: Props) => ({
     html: {
+      h: "100%",
       scrollBehavior: "smooth",
     },
     body: {
+      h: "100%",
       bg: colorMode === "light" ? "gray.100" : "gray.900",
       color: colorMode === "light" ? "gray.700" : "gray.300",
       fontSize: "lg",
-      // transition: "ease 0.5s",
     },
     "#__next": {
-      h: "100vh",
+      h: "100%",
     },
     h1: {
       fontSize: "5xl",

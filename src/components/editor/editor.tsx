@@ -10,7 +10,7 @@ export function Editor() {
     <SimpleGrid
       as="main"
       columns={{ base: 1, lg: 2 }}
-      h="100%"
+      flexGrow={1}
       gap="20px"
       p="20px"
     >
