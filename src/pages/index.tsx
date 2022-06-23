@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import "highlight.js/styles/atom-one-dark.css";
 import Head from "next/head";
 import { Editor } from "src/components/editor";
@@ -11,9 +10,7 @@ export default function IndexPage() {
         <title>Paste - MrCai</title>
       </Head>
       <TopBar />
-      <Box as="main" h="90vh">
-        <Editor />
-      </Box>
+      <Editor />
     </>
   );
 }
