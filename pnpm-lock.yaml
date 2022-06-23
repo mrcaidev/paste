@@ -14,6 +14,7 @@ specifiers:
   eslint-config-next: ^12.1.6
   eslint-config-prettier: ^8.5.0
   framer-motion: ^6.3.13
+  highlight.js: ^11.5.1
   husky: ^8.0.1
   lint-staged: ^13.0.2
   marked: ^4.0.17
@@ -29,6 +30,7 @@ dependencies:
   "@emotion/react": 11.9.3_7eu627umq2cbnjxmysy5yb5jqq
   "@emotion/styled": 11.9.3_qbwmrvb6ojitbfrbjtglmejmbm
   framer-motion: 6.3.13_biqbaboplfbrettd7655fr4n2y
+  highlight.js: 11.5.1
   marked: 4.0.17
   next: 12.1.6_4cc5zw5azim2bix77d63le72su
   react: 18.2.0
@@ -3885,6 +3887,14 @@ packages:
       {
         integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==,
       }
+    dev: false
+
+  /highlight.js/11.5.1:
+    resolution:
+      {
+        integrity: sha512-LKzHqnxr4CrD2YsNoIf/o5nJ09j4yi/GcH5BnYz9UnVpZdS4ucMgvP61TDty5xJcFGRjnH4DpujkS9bHT3hq0Q==,
+      }
+    engines: { node: ">=12.0.0" }
     dev: false
 
   /hoist-non-react-statics/3.3.2:

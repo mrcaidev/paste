@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import "highlight.js/styles/atom-one-dark.css";
 import Head from "next/head";
 import { Editor } from "src/components/editor";
 import { TopBar } from "src/components/top-bar";
