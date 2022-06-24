@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Call cron API
         run: |
-          curl http://paste.mrcai.space/api/cron \
+          curl https://paste.mrcai.space/api/cron \
             -X POST \
-            -H 'Authorization: Bearer ${{ secrets.ACTION_KEY }}'
+            -H 'Authorization: Bearer ${{ secrets.CRON_TOKEN }}'
