@@ -30,8 +30,8 @@ async function create(markdown: string) {
     throw new HttpError(400, "Nothing to paste");
   }
 
-  const { rows, rowCount } = await query<Markdown>(
-    "INSERT INTO markdown(content) VALUES($1) RETURNING *",
+  const { rows, rowCount } = await query<{ id: string }>(
+    "INSERT INTO markdown(content) VALUES($1) RETURNING id",
     [markdown]
   );
 
@@ -39,5 +39,5 @@ async function create(markdown: string) {
     throw new HttpError(503, "Paste failed");
   }
 
-  return rows[0];
+  return rows[0].id;
 }
