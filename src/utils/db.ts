@@ -11,7 +11,7 @@ export const pool = new Pool({
   options: process.env.DB_OPTIONS ?? "Not found",
   ssl: {
     rejectUnauthorized: true,
-    cert: readFileSync("root.crt").toString(),
+    cert: process.env.CERT,
   },
   idleTimeoutMillis: 0,
   connectionTimeoutMillis: 0,
