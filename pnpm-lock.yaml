@@ -8,6 +8,7 @@ specifiers:
   "@emotion/styled": ^11.9.3
   "@types/marked": ^4.0.3
   "@types/node": ^18.0.0
+  "@types/pg": ^8.6.5
   "@types/react": ^18.0.14
   "@types/react-dom": ^18.0.5
   eslint: ^8.18.0
@@ -19,6 +20,7 @@ specifiers:
   lint-staged: ^13.0.2
   marked: ^4.0.17
   next: ^12.1.6
+  pg: ^8.7.3
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -33,6 +35,7 @@ dependencies:
   highlight.js: 11.5.1
   marked: 4.0.17
   next: 12.1.6_4cc5zw5azim2bix77d63le72su
+  pg: 8.7.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
@@ -42,6 +45,7 @@ devDependencies:
   "@commitlint/config-conventional": 17.0.2
   "@types/marked": 4.0.3
   "@types/node": 18.0.0
+  "@types/pg": 8.6.5
   "@types/react": 18.0.14
   "@types/react-dom": 18.0.5
   eslint: 8.18.0
@@ -2060,6 +2064,17 @@ packages:
         integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==,
       }
 
+  /@types/pg/8.6.5:
+    resolution:
+      {
+        integrity: sha512-tOkGtAqRVkHa/PVZicq67zuujI4Oorfglsr2IbKofDwBSysnaqSx7W1mDqFqdkGE6Fbgh+PZAl0r/BWON/mozw==,
+      }
+    dependencies:
+      "@types/node": 18.0.0
+      pg-protocol: 1.5.0
+      pg-types: 2.2.0
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution:
       {
@@ -2468,6 +2483,14 @@ packages:
       electron-to-chromium: 1.4.165
       node-releases: 2.0.5
       update-browserslist-db: 1.0.3_browserslist@4.21.0
+
+  /buffer-writer/2.0.0:
+    resolution:
+      {
+        integrity: sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==,
+      }
+    engines: { node: ">=4" }
+    dev: false
 
   /call-bind/1.0.2:
     resolution:
@@ -4989,6 +5012,13 @@ packages:
     engines: { node: ">=6" }
     dev: true
 
+  /packet-reader/1.0.0:
+    resolution:
+      {
+        integrity: sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==,
+      }
+    dev: false
+
   /parent-module/1.0.1:
     resolution:
       {
@@ -5063,6 +5093,80 @@ packages:
       }
     engines: { node: ">=8" }
 
+  /pg-connection-string/2.5.0:
+    resolution:
+      {
+        integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==,
+      }
+    dev: false
+
+  /pg-int8/1.0.1:
+    resolution:
+      {
+        integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==,
+      }
+    engines: { node: ">=4.0.0" }
+
+  /pg-pool/3.5.1_pg@8.7.3:
+    resolution:
+      {
+        integrity: sha512-6iCR0wVrro6OOHFsyavV+i6KYL4lVNyYAB9RD18w66xSzN+d8b66HiwuP30Gp1SH5O9T82fckkzsRjlrhD0ioQ==,
+      }
+    peerDependencies:
+      pg: ">=8.0"
+    dependencies:
+      pg: 8.7.3
+    dev: false
+
+  /pg-protocol/1.5.0:
+    resolution:
+      {
+        integrity: sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==,
+      }
+
+  /pg-types/2.2.0:
+    resolution:
+      {
+        integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==,
+      }
+    engines: { node: ">=4" }
+    dependencies:
+      pg-int8: 1.0.1
+      postgres-array: 2.0.0
+      postgres-bytea: 1.0.0
+      postgres-date: 1.0.7
+      postgres-interval: 1.2.0
+
+  /pg/8.7.3:
+    resolution:
+      {
+        integrity: sha512-HPmH4GH4H3AOprDJOazoIcpI49XFsHCe8xlrjHkWiapdbHK+HLtbm/GQzXYAZwmPju/kzKhjaSfMACG+8cgJcw==,
+      }
+    engines: { node: ">= 8.0.0" }
+    peerDependencies:
+      pg-native: ">=2.0.0"
+    peerDependenciesMeta:
+      pg-native:
+        optional: true
+    dependencies:
+      buffer-writer: 2.0.0
+      packet-reader: 1.0.0
+      pg-connection-string: 2.5.0
+      pg-pool: 3.5.1_pg@8.7.3
+      pg-protocol: 1.5.0
+      pg-types: 2.2.0
+      pgpass: 1.0.5
+    dev: false
+
+  /pgpass/1.0.5:
+    resolution:
+      {
+        integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==,
+      }
+    dependencies:
+      split2: 4.1.0
+    dev: false
+
   /picocolors/1.0.0:
     resolution:
       {
@@ -5108,6 +5212,36 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+
+  /postgres-array/2.0.0:
+    resolution:
+      {
+        integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==,
+      }
+    engines: { node: ">=4" }
+
+  /postgres-bytea/1.0.0:
+    resolution:
+      {
+        integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==,
+      }
+    engines: { node: ">=0.10.0" }
+
+  /postgres-date/1.0.7:
+    resolution:
+      {
+        integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==,
+      }
+    engines: { node: ">=0.10.0" }
+
+  /postgres-interval/1.2.0:
+    resolution:
+      {
+        integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==,
+      }
+    engines: { node: ">=0.10.0" }
+    dependencies:
+      xtend: 4.0.2
 
   /prelude-ls/1.2.1:
     resolution:
@@ -5674,6 +5808,14 @@ packages:
     dependencies:
       readable-stream: 3.6.0
     dev: true
+
+  /split2/4.1.0:
+    resolution:
+      {
+        integrity: sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==,
+      }
+    engines: { node: ">= 10.x" }
+    dev: false
 
   /string-argv/0.3.1:
     resolution:
@@ -6250,6 +6392,13 @@ packages:
         integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==,
       }
     dev: true
+
+  /xtend/4.0.2:
+    resolution:
+      {
+        integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==,
+      }
+    engines: { node: ">=0.4" }
 
   /y18n/5.0.8:
     resolution:

@@ -17,6 +17,7 @@
     "highlight.js": "^11.5.1",
     "marked": "^4.0.17",
     "next": "^12.1.6",
+    "pg": "^8.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0"
@@ -26,6 +27,7 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@types/marked": "^4.0.3",
     "@types/node": "^18.0.0",
+    "@types/pg": "^8.6.5",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "eslint": "^8.18.0",
