@@ -16,3 +16,9 @@ export interface PastePostResponse extends Response {
 export interface PasteGetIdResponse extends Response {
   data: Paste | null;
 }
+
+export interface CronResponse extends Response {
+  data: {
+    expired: number;
+  } | null;
+}
