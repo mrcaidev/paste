@@ -7,6 +7,7 @@ interface Props {
 
 export const Preview = ({ markdown }: Props) => {
   const bg = useColorModeValue("gray.200", "gray.800");
+  const linkColor = useColorModeValue("blue.700", "blue.300");
 
   const html = { __html: parseMarkdown(markdown) };
 
@@ -20,6 +21,14 @@ export const Preview = ({ markdown }: Props) => {
       shadow="lg"
       rounded="lg"
       overflow="auto"
+      sx={{
+        "& a": {
+          color: linkColor,
+          "&:hover": {
+            textDecor: "underline",
+          },
+        },
+      }}
     />
   );
 };

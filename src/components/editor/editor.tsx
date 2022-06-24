@@ -1,4 +1,10 @@
-import { Box, ButtonGroup, SimpleGrid, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  ButtonGroup,
+  SimpleGrid,
+  VStack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import { memo, useState } from "react";
 import { Help } from "./help";
 import { Markdown } from "./markdown";
@@ -11,7 +17,7 @@ export const Editor = memo(() => {
   const [markdown, setMarkdown] = useState("");
 
   return (
-    <Box as="main">
+    <VStack align="stretch" h="100%">
       <Wrap px="30px" spacing="8px" justify="space-between">
         <WrapItem gap="8px">
           <ButtonGroup
@@ -33,13 +39,13 @@ export const Editor = memo(() => {
         gridTemplateRows={{ base: "1fr 1fr", lg: "1fr" }}
         gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
         gap="20px"
-        h="80vh"
         p="20px"
+        flexGrow={1}
       >
         <Markdown markdown={markdown} setMarkdown={setMarkdown} />
         <Preview markdown={markdown} />
       </SimpleGrid>
-    </Box>
+    </VStack>
   );
 });
 

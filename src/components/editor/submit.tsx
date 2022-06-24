@@ -2,7 +2,7 @@ import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { memo } from "react";
 import { FaPaperPlane } from "react-icons/fa";
-import { MarkdownPostResponse } from "src/interfaces/markdown.interface";
+import { PastePostResponse } from "src/interfaces/api.interface";
 
 interface Props {
   markdown: string;
@@ -14,25 +14,32 @@ export const Submit = memo(({ markdown }: Props) => {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch("/api/markdown", {
+      const res = await fetch("/api/paste", {
         method: "POST",
         body: JSON.stringify({ content: markdown }),
         headers: { "Content-Type": "application/json" },
       });
-      const { message, data }: MarkdownPostResponse = await res.json();
+      const { message, data }: PastePostResponse = await res.json();
 
       if (!res.ok || data === null) {
-        throw new Error(message);
+        toast({
+          title: "Error",
+          description: message,
+          status: "error",
+        });
+        return;
       }
 
       toast({
         title: "Success",
+        description: "Document has been pasted",
         status: "success",
       });
-      router.push(`/${data}`);
+      router.push(data.url);
     } catch (e) {
       toast({
-        title: String(e),
+        title: "Error",
+        description: String(e),
         status: "error",
       });
     }

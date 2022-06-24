@@ -8,9 +8,15 @@ export function TopBar() {
       as="header"
       justify="space-between"
       align="center"
+      pos="fixed"
+      top="0"
+      left="0"
+      right="0"
       px="32px"
       py="16px"
       gap="20px"
+      zIndex="9999"
+      backdropFilter="blur(5px)"
     >
       <Logo />
       <Show above="sm">

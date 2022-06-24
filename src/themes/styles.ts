@@ -22,12 +22,19 @@ export const styles = {
       },
     },
     html: {
+      h: "100%",
       scrollBehavior: "smooth",
     },
     body: {
+      h: "100%",
       bg: colorMode === "light" ? "gray.100" : "gray.900",
       color: colorMode === "light" ? "gray.700" : "gray.300",
       fontSize: "lg",
+    },
+    "#__next": {
+      h: "100%",
+      display: "flex",
+      flexDirection: "column",
     },
     h1: {
       fontSize: "5xl",

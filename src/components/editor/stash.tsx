@@ -14,6 +14,7 @@ export const Stash = memo(({ markdown }: Props) => {
       localStorage.setItem("stash", markdown);
       toast({
         title: "Success",
+        description: "Draft has been stashed",
         status: "success",
       });
     } catch (e) {

@@ -28,6 +28,7 @@ export const Sync = memo(({ setMarkdown }: Props) => {
       onClose();
       toast({
         title: "Success",
+        description: "Draft has been restored",
         status: "success",
       });
     } catch (e) {

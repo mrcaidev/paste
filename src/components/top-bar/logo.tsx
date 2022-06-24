@@ -1,5 +1,4 @@
-import { Text } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Link, Text } from "@chakra-ui/react";
 
 export function Logo() {
   return (
@@ -10,7 +9,13 @@ export function Logo() {
       lineHeight="none"
       textAlign="center"
     >
-      <NextLink href="https://www.mrcai.space">MRCAI</NextLink>
+      <Link
+        href="https://www.mrcai.space"
+        isExternal
+        _hover={{ textDecor: "none" }}
+      >
+        MRCAI
+      </Link>
     </Text>
   );
 }

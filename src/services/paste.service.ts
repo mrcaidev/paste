@@ -1,43 +1,40 @@
 import { HttpError } from "src/errors/http.error";
-import { Markdown } from "src/models/markdown.model";
+import { Paste } from "src/models/paste.model";
 import { query } from "src/utils/db";
 import { isUUID } from "src/utils/validator";
 
-export const markdownService = {
+export const pasteService = {
   findById,
   create,
 };
 
 async function findById(id: string) {
+  // Validation.
   if (!isUUID(id)) {
     throw new HttpError(400, "Wrong UUID format");
   }
 
-  const { rows, rowCount } = await query<Markdown>(
-    "SELECT * FROM markdown WHERE id = $1",
+  // Data access.
+  const { rows, rowCount } = await query<Paste>(
+    "SELECT * FROM paste WHERE id = $1",
     [id]
   );
-
   if (rowCount === 0) {
     throw new HttpError(404, "Document not found");
   }
-
   return rows[0];
 }
 
-async function create(markdown: string) {
-  if (markdown.length === 0) {
+async function create(content: string) {
+  // Validation.
+  if (content.length === 0) {
     throw new HttpError(400, "Nothing to paste");
   }
 
-  const { rows, rowCount } = await query<{ id: string }>(
-    "INSERT INTO markdown(content) VALUES($1) RETURNING id",
-    [markdown]
+  // Data access.
+  const { rows } = await query<{ id: string }>(
+    "INSERT INTO paste(content) VALUES($1) RETURNING id",
+    [content]
   );
-
-  if (rowCount !== 1) {
-    throw new HttpError(503, "Paste failed");
-  }
-
   return rows[0].id;
 }
