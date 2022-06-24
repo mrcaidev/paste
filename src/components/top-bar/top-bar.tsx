@@ -15,7 +15,7 @@ export function TopBar() {
       px="32px"
       py="16px"
       gap="20px"
-      zIndex="9999"
+      zIndex="999"
       backdropFilter="blur(5px)"
     >
       <Logo />
