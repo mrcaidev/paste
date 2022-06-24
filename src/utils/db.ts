@@ -1,4 +1,3 @@
-import { readFileSync } from "fs";
 import { Pool, types } from "pg";
 import { HttpError } from "src/errors/http.error";
 
@@ -11,7 +10,7 @@ export const pool = new Pool({
   options: process.env.DB_OPTIONS ?? "Not found",
   ssl: {
     rejectUnauthorized: true,
-    cert: process.env.CERT,
+    cert: process.env.CERT?.replace(/\\n/gm, "\n") ?? "",
   },
   idleTimeoutMillis: 0,
   connectionTimeoutMillis: 0,
