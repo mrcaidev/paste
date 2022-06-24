@@ -1,6 +1,6 @@
 import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import { PastePostResponse } from "src/interfaces/api.interface";
 
@@ -11,8 +11,10 @@ interface Props {
 export const Submit = memo(({ markdown }: Props) => {
   const toast = useToast();
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async () => {
+  const pasteMarkdown = async () => {
+    setIsSubmitting(true);
     try {
       const res = await fetch("/api/paste", {
         method: "POST",
@@ -42,6 +44,8 @@ export const Submit = memo(({ markdown }: Props) => {
         description: String(e),
         status: "error",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -50,8 +54,10 @@ export const Submit = memo(({ markdown }: Props) => {
       colorScheme="green"
       size={{ base: "sm", md: "md" }}
       leftIcon={<Icon as={FaPaperPlane} />}
-      onClick={handleSubmit}
-      disabled={markdown === ""}
+      onClick={pasteMarkdown}
+      disabled={markdown === "" || isSubmitting}
+      isLoading={isSubmitting}
+      loadingText="Submitting..."
     >
       Submit
     </Button>
