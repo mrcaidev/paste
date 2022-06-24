@@ -28,7 +28,7 @@ export default async function handler(
       return;
     }
     console.error(e);
-    res.status(500).json({ message: "Unknown error", data: null });
+    res.status(500).json({ message: "Please try again later", data: null });
     return;
   }
 }

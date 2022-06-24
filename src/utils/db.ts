@@ -22,10 +22,13 @@ types.setTypeParser(types.builtins.TIMESTAMPTZ, value => {
   return date.toLocaleString("zh-CN");
 });
 
-export function query<T>(sql: string, values: any[] = []) {
+export async function query<T>(sql: string, values: any[] = []) {
+  const client = await pool.connect();
   try {
-    return pool.query<T>(sql, values);
+    return client.query<T>(sql, values);
   } catch (e) {
     throw new HttpError(503, "Upstream error");
+  } finally {
+    client.release();
   }
 }
