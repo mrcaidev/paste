@@ -1,15 +1,3 @@
-import { Center, Heading } from "@chakra-ui/react";
-import Head from "next/head";
+const Page = () => <h1>Not Found</h1>;
 
-export default function NotFoundPage() {
-  return (
-    <>
-      <Head>
-        <title>404 - MrCai</title>
-      </Head>
-      <Center h="80vh">
-        <Heading as="h1">Page Not Found</Heading>
-      </Center>
-    </>
-  );
-}
+export default Page;

@@ -1,11 +1,7 @@
 {
-  "*.scss": [
-    "stylelint --fix --cache --cache-location ./node_modules/.cache/stylelint/.stylelint-cache",
+  "*.{ts,tsx}": [
+    "eslint --fix --cache --cache-location node_modules/.cache/eslint/.eslintcache",
     "prettier --write --cache"
   ],
-  "*.{js,ts,jsx,tsx}": [
-    "eslint --fix --cache --cache-location ./node_modules/.cache/eslint/.eslint-cache",
-    "prettier --write --cache"
-  ],
-  "*.{html,json,md,yaml}": "prettier --write --cache"
+  "*.{css,json,md}": "prettier --write --cache"
 }

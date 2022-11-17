@@ -1,6 +1,6 @@
 {
   "name": "paste",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,32 +10,38 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "framer-motion": "^6.3.13",
-    "highlight.js": "^11.5.1",
-    "marked": "^4.0.17",
-    "next": "^12.1.6",
-    "pg": "^8.7.3",
+    "marked": "^4.2.2",
+    "next": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.6.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
-    "@types/marked": "^4.0.3",
-    "@types/node": "^18.0.0",
-    "@types/pg": "^8.6.5",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "eslint": "^8.18.0",
-    "eslint-config-next": "^12.1.6",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@next/eslint-plugin-next": "^13.0.3",
+    "@tailwindcss/typography": "^0.5.8",
+    "@types/marked": "^4.0.7",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.2",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "^44.0.2",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "tailwindcss": "^3.2.1",
+    "typescript": "^4.9.3"
   }
 }
