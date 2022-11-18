@@ -6,7 +6,7 @@ import "src/styles/global.css";
 const App = ({ Component, pageProps }: AppProps) => (
   <>
     <Header />
-    <main className="flex flex-col justify-center items-center gap-6 max-w-5xl min-h-screen px-8 py-20 mx-auto">
+    <main className="max-w-5xl min-h-screen px-8 pt-20 mx-auto">
       <Component {...pageProps} />
     </main>
     <Footer />
