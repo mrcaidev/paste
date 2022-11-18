@@ -6,7 +6,9 @@ const Page = () => (
       <link rel="canonical" href="https://paste.mrcai.dev/" />
       <meta name="robots" content="index, follow" />
     </Head>
-    <h1 className="text-4xl">Hello</h1>
+    <main className="max-w-5xl min-h-screen px-8 pt-20 mx-auto">
+      <h1 className="text-4xl">Hello</h1>
+    </main>
   </>
 );
 
