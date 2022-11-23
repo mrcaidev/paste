@@ -6,7 +6,13 @@ import { useTheme } from "src/hooks/use-theme";
 
 const Logo = () => (
   <Link href="/" aria-label="Logo">
-    <Image src={logo} alt="Logo" width="32" height="40" className="p-1" />
+    <Image
+      src={logo}
+      alt="Logo"
+      width="32"
+      height="40"
+      className="w-8 h-10 p-1"
+    />
   </Link>
 );
 

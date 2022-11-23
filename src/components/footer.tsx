@@ -10,7 +10,7 @@ const Logo = () => (
     href="/"
     className="flex items-center gap-3 order-2 md:order-1 px-2 py-1"
   >
-    <Image src={logo} alt="Logo" width="20" height="28" />
+    <Image src={logo} alt="Logo" width="20" height="28" className="w-5 h-7" />
     <p className="font-semibold text-lg">paste.mrcai.dev</p>
   </Link>
 );
