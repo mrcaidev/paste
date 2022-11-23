@@ -3,8 +3,6 @@ import Link from "next/link";
 import logo from "public/logo.svg";
 import { FiArrowUp, FiCode } from "react-icons/fi";
 
-const year = new Date().getFullYear();
-
 const Logo = () => (
   <Link
     href="/"
@@ -17,7 +15,7 @@ const Logo = () => (
 
 const Footnotes = () => (
   <div className="order-3 md:order-2 py-1 space-y-1 text-xs text-slate-600 dark:text-slate-400 text-center">
-    <small>©2022-{year} Yuwang Cai. All Rights Reserved.</small>
+    <small>©2022-present Yuwang Cai. All Rights Reserved.</small>
   </div>
 );
 
