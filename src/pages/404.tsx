@@ -3,9 +3,11 @@ import { Head } from "src/components/head";
 
 const Page = () => (
   <>
-    <Head title="Not Found" description="Page not found.">
-      <meta name="robots" content="noindex, nofollow" />
-    </Head>
+    <Head
+      title="Not Found"
+      description="Sorry, this content is no longer available."
+      pathname="/404"
+    />
     <main className="flex flex-col justify-center items-center gap-8 max-w-5xl min-h-screen px-8 pt-20 mx-auto">
       <h1 className="font-bold text-3xl sm:text-4xl">Page Not Found</h1>
       <div className="space-y-2 text-base sm:text-lg text-center">
