@@ -24,7 +24,7 @@ const ThemeToggler = () => {
       type="button"
       onClick={toggle}
       aria-label="Toggle theme"
-      className="p-2 hover:scale-110 active:scale-90 transition-transform"
+      className="p-2"
     >
       {theme === "dark" ? <FiSun size="24" /> : <FiMoon size="24" />}
     </button>

@@ -25,7 +25,7 @@ const ViewSource = () => (
     target="_blank"
     rel="noreferrer"
     aria-label="View source code on GitHub"
-    className="p-2 hover:scale-110 active:scale-90 transition-transform"
+    className="p-2"
   >
     <FiCode size="24" />
   </a>
@@ -36,7 +36,7 @@ const BackToTop = () => (
     type="button"
     onClick={() => scrollTo({ top: 0, behavior: "smooth" })}
     aria-label="Back to top"
-    className="p-2 hover:scale-110 active:scale-90 transition-transform"
+    className="p-2"
   >
     <FiArrowUp size="24" />
   </button>
