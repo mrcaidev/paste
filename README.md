@@ -5,7 +5,6 @@
 A simple markdown pastebin.
 
 - Realtime HTML preview.
-- Automatic code syntax highlighting.
 - Lock your content with password.
 - Short sharing URL.
 
