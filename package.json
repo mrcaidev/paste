@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.1.1",
     "dompurify": "^2.4.1",
     "marked": "^4.2.2",
     "nanoid": "^4.0.0",

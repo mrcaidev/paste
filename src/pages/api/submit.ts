@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createId } from "src/utils/nanoid";
+import { supabase } from "src/utils/supabase";
 
 interface ReqBody {
   title?: string;
@@ -37,7 +38,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResBody>) {
 
     const id = await createId();
 
-    console.table({ id, title, content, password });
+    console.log("Connecting supabase...");
+    const { error } = await supabase
+      .from("default")
+      .insert({ id, title, content, password });
+    if (error) {
+      console.error(error.message);
+      res.status(500).json({ message: error.message });
+      return;
+    }
 
     res.status(201).json({ url: buildUrl(id, password) });
   } catch (error) {
