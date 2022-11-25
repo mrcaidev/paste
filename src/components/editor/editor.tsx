@@ -26,7 +26,6 @@ export const Editor = () => {
           title={title}
           content={content}
           password={password}
-          isPreviewMode={isPreviewMode}
           isDisabled={content.length === 0}
         />
       </div>

@@ -24,6 +24,7 @@
     "sourceType": "module"
   },
   "settings": {
+    "polyfills": ["fetch"],
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true
