@@ -1,8 +1,10 @@
-import { sanitize } from "dompurify";
 import { marked } from "marked";
 
+const renderer = new marked.Renderer();
+renderer.link = (href, title, text) => {
+  return `<a href="${href}" title="${title}" target="_blank" rel="noreferrer">${text}</a>`;
+};
+
 export function parseMarkdown(text: string) {
-  const html = marked(text);
-  const sanitizedHtml = sanitize(html);
-  return sanitizedHtml;
+  return marked(text);
 }
