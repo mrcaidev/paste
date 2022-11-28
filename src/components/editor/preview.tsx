@@ -14,7 +14,7 @@ export const Preview = ({ title, content }: Props) => {
     <p className="grow grid place-items-center">Nothing pasted yet.</p>
   ) : (
     <article className="grow article">
-      <h1>{title}</h1>
+      <h1>{title || "No Title"}</h1>
       <section dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   );

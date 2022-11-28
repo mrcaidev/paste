@@ -38,7 +38,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResBody>) {
 
     const id = await createId();
 
-    console.log("Connecting supabase...");
     const { error } = await supabase
       .from("default")
       .insert({ id, title, content, password });

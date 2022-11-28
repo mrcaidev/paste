@@ -7,37 +7,40 @@ interface Props {
   dispatch: Dispatch<Action>;
 }
 
-export const Form = ({ title, content, dispatch }: Props) => {
-  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    dispatch({ type: "title", payload: e.target.value });
-  };
+type HandlerFactory = (
+  type: "title" | "content"
+) => ChangeEventHandler<HTMLTextAreaElement>;
 
-  const handleTextareaChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+export const Form = ({ title, content, dispatch }: Props) => {
+  const createHandler: HandlerFactory = (type) => (e) => {
     e.target.style.height = "0px";
     e.target.style.height = e.target.scrollHeight + "px";
-    dispatch({ type: "content", payload: e.target.value });
+    dispatch({ type, payload: e.target.value });
   };
+
+  const handleTitleChange = createHandler("title");
+  const handleContentChange = createHandler("content");
 
   return (
     <form className="grow flex flex-col">
-      <input
-        type="text"
+      <textarea
         name="title"
-        autoComplete="off"
         value={title}
         placeholder="Title (Optional)"
+        autoComplete="off"
+        rows={1}
+        onChange={handleTitleChange}
         aria-label="Title (Optional)"
-        onChange={handleInputChange}
-        className="min-w-0 w-full py-3 border-none outline-none bg-transparent font-bold text-4xl placeholder:text-slate-500 disabled:text-slate-500"
+        className="w-full py-2 border-none outline-none bg-transparent font-bold text-4xl leading-normal placeholder:text-slate-500 disabled:text-slate-500 resize-none"
       />
       <textarea
         name="content"
-        autoComplete="off"
         value={content}
         placeholder="Paste your content here. (You can use Markdown syntax!)"
+        autoComplete="off"
+        onChange={handleContentChange}
         aria-label="Paste your content here. (You can use Markdown syntax!)"
-        onChange={handleTextareaChange}
-        className="grow w-full py-6 border-none outline-none bg-transparent placeholder:text-slate-500 disabled:text-slate-500 resize-none"
+        className="grow w-full py-4 border-none outline-none bg-transparent placeholder:text-slate-500 disabled:text-slate-500 resize-none"
       />
     </form>
   );

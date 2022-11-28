@@ -21,13 +21,9 @@ export const Editor = () => {
       )}
       <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 py-6">
         <Password password={password} dispatch={dispatch} />
+        <div aria-hidden="true" className="sm:grow" />
         <ModeToggler isPreviewMode={isPreviewMode} dispatch={dispatch} />
-        <Submit
-          title={title}
-          content={content}
-          password={password}
-          isDisabled={content.length === 0}
-        />
+        <Submit title={title} content={content} password={password} />
       </div>
     </>
   );

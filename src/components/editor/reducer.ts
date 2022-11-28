@@ -5,15 +5,12 @@ export interface State {
   isPreviewMode: boolean;
 }
 
+// TODO: Derive `Action` from `State`, instead of hard-coding those property names.
 export type Action =
-  | {
-      type: "title" | "content" | "password";
-      payload: string;
-    }
-  | {
-      type: "isPreviewMode";
-      payload: boolean;
-    };
+  | { type: "title"; payload: string }
+  | { type: "content"; payload: string }
+  | { type: "password"; payload: string }
+  | { type: "isPreviewMode"; payload: boolean };
 
 export const defaultState: State = {
   title: "",
@@ -22,7 +19,9 @@ export const defaultState: State = {
   isPreviewMode: false,
 };
 
-export function reducer(state: State, action: Action) {
+type Reducer = (state: State, action: Action) => State;
+
+export const reducer: Reducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -42,4 +41,4 @@ export function reducer(state: State, action: Action) {
       throw new Error("Invalid action type: " + type);
     }
   }
-}
+};

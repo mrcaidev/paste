@@ -5,11 +5,11 @@ interface Props {
   title: string;
   content: string;
   password: string;
-  isDisabled: boolean;
 }
 
-export const Submit = ({ title, content, password, isDisabled }: Props) => {
+export const Submit = ({ title, content, password }: Props) => {
   const router = useRouter();
+  const isDisabled = content.length === 0;
 
   const handleClick = async () => {
     const res = await fetch("/api/submit", {
@@ -38,7 +38,7 @@ export const Submit = ({ title, content, password, isDisabled }: Props) => {
       disabled={isDisabled}
       aria-disabled={isDisabled}
       onClick={handleClick}
-      className="flex justify-center items-center gap-2 px-4 py-2 rounded-md shadow bg-green-300 dark:bg-green-700 hover:bg-green-400 dark:hover:bg-green-600 disabled:bg-slate-300 dark:disabled:bg-slate-700 font-semibold disabled:text-slate-600 dark:disabled:text-slate-400"
+      className="flex justify-center items-center gap-2 px-4 py-2 rounded-md disabled:outline disabled:outline-2 disabled:-outline-offset-2 disabled:outline-slate-300 dark:disabled:outline-slate-700 bg-green-300 dark:bg-green-700 hover:bg-green-400 dark:hover:bg-green-600 disabled:bg-transparent dark:disabled:bg-transparent font-semibold disabled:text-slate-600 dark:disabled:text-slate-400"
     >
       <FiUploadCloud size="16" aria-hidden="true" />
       Submit

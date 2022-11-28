@@ -7,25 +7,22 @@ interface Props {
 }
 
 export const Password = ({ password, dispatch }: Props) => {
-  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     dispatch({ type: "password", payload: e.target.value });
   };
 
   return (
-    <div className="space-x-2 sm:mr-auto text-center">
-      <label htmlFor="password">Password:</label>
-      <input
-        type="text"
-        name="password"
-        id="password"
-        autoComplete="off"
-        minLength={1}
-        maxLength={20}
-        value={password}
-        placeholder="Optional, 1-20 characters"
-        onChange={handleInputChange}
-        className="min-w-0 w-52 p-0.5 border-b border-slate-500 outline-none bg-transparent placeholder:text-slate-500 disabled:text-slate-500"
-      />
-    </div>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      value={password}
+      autoComplete="off"
+      minLength={1}
+      maxLength={20}
+      placeholder="Password (Optional, 1-20 characters)"
+      onChange={handleChange}
+      className="min-w-0 sm:w-72 p-0.5 border-b-2 border-slate-500 focus:border-sky-700 dark:focus:border-sky-300 outline-none bg-transparent placeholder:text-slate-500 disabled:text-slate-500"
+    />
   );
 };
