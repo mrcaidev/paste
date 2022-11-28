@@ -5,7 +5,7 @@ type HandlerFactory = (
   type: "title" | "content"
 ) => ChangeEventHandler<HTMLTextAreaElement>;
 
-export const Form = () => {
+export const Writing = () => {
   const { title, content, isSubmitting, dispatch } = useEditor();
 
   const createHandler: HandlerFactory = (type) => (e) => {

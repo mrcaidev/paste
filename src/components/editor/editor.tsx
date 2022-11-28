@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { Form } from "./form";
 import { Loading } from "./loading";
 import { ModeToggler } from "./mode-toggler";
 import { Password } from "./password";
 import { EditorProvider, useEditorRoot } from "./store";
 import { Submit } from "./submit";
+import { Writing } from "./writing";
 
 const Preview = dynamic(() => import("./preview"), { suspense: true });
 
@@ -19,7 +19,7 @@ export const Editor = () => {
           <Preview />
         </Suspense>
       ) : (
-        <Form />
+        <Writing />
       )}
       <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 py-6">
         <Password />
