@@ -1,14 +1,11 @@
 import { useRouter } from "next/router";
 import { FiUploadCloud } from "react-icons/fi";
+import { useEditor } from "./store";
 
-interface Props {
-  title: string;
-  content: string;
-  password: string;
-}
-
-export const Submit = ({ title, content, password }: Props) => {
+export const Submit = () => {
+  const { title, content, password } = useEditor();
   const router = useRouter();
+
   const isDisabled = content.length === 0;
 
   const handleClick = async () => {

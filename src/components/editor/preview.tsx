@@ -1,12 +1,10 @@
 import { useMemo } from "react";
 import { parseMarkdown } from "src/utils/markdown";
+import { useEditor } from "./store";
 
-interface Props {
-  title: string;
-  content: string;
-}
+const Preview = () => {
+  const { title, content } = useEditor();
 
-export const Preview = ({ title, content }: Props) => {
   const isEmpty = !title && !content;
   const html = useMemo(() => parseMarkdown(content), [content]);
 
@@ -19,3 +17,5 @@ export const Preview = ({ title, content }: Props) => {
     </article>
   );
 };
+
+export default Preview;

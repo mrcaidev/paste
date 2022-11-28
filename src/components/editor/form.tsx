@@ -1,23 +1,18 @@
-import type { ChangeEventHandler, Dispatch } from "react";
-import type { Action } from "./reducer";
-
-interface Props {
-  title: string;
-  content: string;
-  dispatch: Dispatch<Action>;
-}
+import type { ChangeEventHandler } from "react";
+import { useEditor } from "./store";
 
 type HandlerFactory = (
   type: "title" | "content"
 ) => ChangeEventHandler<HTMLTextAreaElement>;
 
-export const Form = ({ title, content, dispatch }: Props) => {
+export const Form = () => {
+  const { title, content, dispatch } = useEditor();
+
   const createHandler: HandlerFactory = (type) => (e) => {
     e.target.style.height = "0px";
     e.target.style.height = e.target.scrollHeight + "px";
     dispatch({ type, payload: e.target.value });
   };
-
   const handleTitleChange = createHandler("title");
   const handleContentChange = createHandler("content");
 

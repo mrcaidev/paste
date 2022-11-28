@@ -1,13 +1,10 @@
-import type { Dispatch, MouseEventHandler } from "react";
+import type { MouseEventHandler } from "react";
 import { FiEdit, FiEye } from "react-icons/fi";
-import type { Action } from "./reducer";
+import { useEditor } from "./store";
 
-interface Props {
-  isPreviewMode: boolean;
-  dispatch: Dispatch<Action>;
-}
+export const ModeToggler = () => {
+  const { isPreviewMode, dispatch } = useEditor();
 
-export const ModeToggler = ({ isPreviewMode, dispatch }: Props) => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     dispatch({ type: "isPreviewMode", payload: !isPreviewMode });
   };
