@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^13.0.5",
     "@supabase/supabase-js": "^2.1.1",
     "marked": "^4.2.2",
     "nanoid": "^4.0.0",
