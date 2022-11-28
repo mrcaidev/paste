@@ -3,18 +3,22 @@ import { FiUploadCloud } from "react-icons/fi";
 import { useEditor } from "./store";
 
 export const Submit = () => {
-  const { title, content, password } = useEditor();
+  const { title, content, password, isSubmitting, dispatch } = useEditor();
   const router = useRouter();
 
-  const isDisabled = content.length === 0;
+  const isDisabled = content.length === 0 || isSubmitting;
 
   const handleClick = async () => {
+    dispatch({ type: "isSubmitting", payload: true });
+
     const res = await fetch("/api/submit", {
       method: "POST",
       body: JSON.stringify({ title, content, password }),
       headers: { "Content-Type": "application/json" },
     });
     const { message, url } = await res.json();
+
+    dispatch({ type: "isSubmitting", payload: false });
 
     if (!res.ok) {
       console.error(message ?? "Unknown error");
