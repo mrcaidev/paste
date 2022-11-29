@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import { FiUploadCloud } from "react-icons/fi";
+import { Button } from "../button";
 import { useEditor } from "./store";
 
 export const Submit = () => {
   const { title, content, password, isSubmitting, dispatch } = useEditor();
   const router = useRouter();
-
-  const isDisabled = content.length === 0 || isSubmitting;
 
   const handleClick = async () => {
     dispatch({ type: "isSubmitting", payload: true });
@@ -34,15 +33,13 @@ export const Submit = () => {
   };
 
   return (
-    <button
-      type="button"
-      disabled={isDisabled}
-      aria-disabled={isDisabled}
+    <Button
+      color="green"
+      disabled={content.length === 0 || isSubmitting}
       onClick={handleClick}
-      className="flex justify-center items-center gap-2 px-4 py-2 rounded-md disabled:outline disabled:outline-2 disabled:-outline-offset-2 disabled:outline-slate-300 dark:disabled:outline-slate-700 bg-green-300 dark:bg-green-700 hover:bg-green-400 dark:hover:bg-green-600 disabled:bg-transparent dark:disabled:bg-transparent font-semibold disabled:text-slate-600 dark:disabled:text-slate-400"
     >
       <FiUploadCloud size="16" aria-hidden="true" />
       Submit
-    </button>
+    </Button>
   );
 };
