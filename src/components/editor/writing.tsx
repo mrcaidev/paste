@@ -23,10 +23,9 @@ export const Writing = () => {
         value={title}
         placeholder="Title (Optional)"
         autoComplete="off"
+        disabled={isSubmitting}
         rows={1}
         onChange={handleTitleChange}
-        disabled={isSubmitting}
-        aria-disabled={isSubmitting}
         aria-label="Title (Optional)"
         className="w-full py-2 border-none outline-none bg-transparent font-bold text-4xl leading-normal placeholder:text-slate-500 disabled:text-slate-500 resize-none"
       />
@@ -35,9 +34,8 @@ export const Writing = () => {
         value={content}
         placeholder="Paste your content here. (You can use Markdown syntax!)"
         autoComplete="off"
-        onChange={handleContentChange}
         disabled={isSubmitting}
-        aria-disabled={isSubmitting}
+        onChange={handleContentChange}
         aria-label="Paste your content here. (You can use Markdown syntax!)"
         className="grow w-full py-4 border-none outline-none bg-transparent placeholder:text-slate-500 disabled:text-slate-500 resize-none"
       />

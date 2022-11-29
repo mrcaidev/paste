@@ -19,7 +19,7 @@ export const Button = ({
     <button
       type={type}
       {...rest}
-      className={`flex justify-center items-center gap-2 px-4 py-2 rounded-md disabled:outline disabled:outline-2 disabled:-outline-offset-2 disabled:outline-slate-300 dark:disabled:outline-slate-700 ${bgColor} disabled:bg-transparent dark:disabled:bg-transparent font-semibold disabled:text-slate-600 dark:disabled:text-slate-400`}
+      className={`flex justify-center items-center gap-2 px-4 py-2 rounded-md disabled:outline disabled:outline-2 disabled:-outline-offset-2 disabled:outline-slate-300 dark:disabled:outline-slate-700 ${bgColor} disabled:bg-transparent dark:disabled:bg-transparent font-semibold disabled:text-slate-300 dark:disabled:text-slate-700`}
     >
       {children}
     </button>
