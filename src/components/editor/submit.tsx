@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { FiUploadCloud } from "react-icons/fi";
+import { FiLoader, FiUploadCloud } from "react-icons/fi";
 import { Button } from "../button";
 import { useEditor } from "./store";
 
@@ -38,7 +38,15 @@ export const Submit = () => {
       disabled={content.length === 0 || isSubmitting}
       onClick={handleClick}
     >
-      <FiUploadCloud size="16" aria-hidden="true" />
+      {isSubmitting ? (
+        <FiLoader
+          size="16"
+          aria-hidden="true"
+          className="animate-spin [animation-duration:2s]"
+        />
+      ) : (
+        <FiUploadCloud size="16" aria-hidden="true" />
+      )}
       Submit
     </Button>
   );
