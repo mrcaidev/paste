@@ -42,7 +42,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResBody>) {
       .from("default")
       .insert({ id, title, content, password });
     if (error) {
-      console.error(error.message);
       res.status(500).json({ message: error.message });
       return;
     }

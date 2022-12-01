@@ -53,7 +53,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
     .eq("id", id)
     .eq("password", password);
   if (error) {
-    console.error(error.message);
     return { notFound: true };
   }
   if (data === null || data.length === 0) {

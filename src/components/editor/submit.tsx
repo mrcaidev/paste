@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { FiLoader, FiUploadCloud } from "react-icons/fi";
+import { toast } from "react-toastify";
 import { Button } from "../button";
 import { useEditor } from "./store";
 
@@ -8,6 +9,7 @@ export const Submit = () => {
   const router = useRouter();
 
   const handleClick = async () => {
+    const infoToast = toast.info("Submitting...");
     dispatch({ type: "isSubmitting", payload: true });
 
     const res = await fetch("/api/submit", {
@@ -18,17 +20,19 @@ export const Submit = () => {
     const { message, url } = await res.json();
 
     dispatch({ type: "isSubmitting", payload: false });
+    toast.dismiss(infoToast);
 
     if (!res.ok) {
-      console.error(message ?? "Unknown error");
+      toast.error(message ?? "Sorry, something went wrong.");
       return;
     }
 
     if (!url) {
-      console.error("Response success. URL not found");
+      toast.error("Sorry, the URL of paste is not found.");
       return;
     }
 
+    toast.success("Success! You will be redirected to your paste.");
     router.push(url);
   };
 

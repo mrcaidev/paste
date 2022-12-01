@@ -1,5 +1,6 @@
 import type { MouseEventHandler } from "react";
 import { FiCopy } from "react-icons/fi";
+import { toast } from "react-toastify";
 import { Button } from "./button";
 
 const handleClick: MouseEventHandler<HTMLButtonElement> = async () => {
@@ -7,9 +8,9 @@ const handleClick: MouseEventHandler<HTMLButtonElement> = async () => {
 
   try {
     await navigator.clipboard.writeText(url);
-    console.log("Copied to clipboard!");
+    toast.success("Copied to clipboard!");
   } catch {
-    console.error("Permission denied.");
+    toast.error("Permission to clipboard denied.");
   }
 };
 
