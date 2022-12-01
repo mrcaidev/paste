@@ -1,15 +1,30 @@
-import { Center, Heading } from "@chakra-ui/react";
-import Head from "next/head";
+import Link from "next/link";
+import { Head } from "src/components/head";
 
-export default function NotFoundPage() {
-  return (
-    <>
-      <Head>
-        <title>404 - MrCai</title>
-      </Head>
-      <Center h="80vh">
-        <Heading as="h1">Page Not Found</Heading>
-      </Center>
-    </>
-  );
-}
+const Page = () => (
+  <>
+    <Head
+      title="Not Found"
+      description="Sorry, this content is no longer available."
+      pathname="/404"
+    />
+    <main className="flex flex-col justify-center items-center gap-8 max-w-5xl min-h-screen px-8 pt-20 mx-auto">
+      <h1 className="font-bold text-3xl sm:text-4xl">Page Not Found</h1>
+      <div className="space-y-2 text-base sm:text-lg text-center">
+        <p>Sorry, this content is no longer available.</p>
+        <p>
+          What about&nbsp;
+          <Link
+            href="/"
+            className="hover:text-sky-800 dark:hover:text-sky-200 underline underline-offset-8"
+          >
+            pasting a new one
+          </Link>
+          ?
+        </p>
+      </div>
+    </main>
+  </>
+);
+
+export default Page;

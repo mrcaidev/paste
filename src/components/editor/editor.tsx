@@ -1,52 +1,32 @@
-import {
-  ButtonGroup,
-  SimpleGrid,
-  VStack,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
-import { memo, useState } from "react";
-import { Help } from "./help";
-import { Markdown } from "./markdown";
-import { Preview } from "./preview";
-import { Stash } from "./stash";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import { Loading } from "./loading";
+import { ModeToggler } from "./mode-toggler";
+import { Password } from "./password";
+import { EditorProvider, useEditorRoot } from "./store";
 import { Submit } from "./submit";
-import { Sync } from "./sync";
+import { Writing } from "./writing";
 
-export const Editor = memo(() => {
-  const [markdown, setMarkdown] = useState("");
+const Preview = dynamic(() => import("./preview"), { suspense: true });
+
+export const Editor = () => {
+  const context = useEditorRoot();
 
   return (
-    <VStack align="stretch" h="100%">
-      <Wrap px="30px" spacing="8px" justify="space-between">
-        <WrapItem gap="8px">
-          <ButtonGroup
-            variant="solid"
-            colorScheme="blue"
-            size={{ base: "sm", md: "md" }}
-            isAttached
-          >
-            <Stash markdown={markdown} />
-            <Sync setMarkdown={setMarkdown} />
-          </ButtonGroup>
-          <Help />
-        </WrapItem>
-        <WrapItem>
-          <Submit markdown={markdown} />
-        </WrapItem>
-      </Wrap>
-      <SimpleGrid
-        gridTemplateRows={{ base: "1fr 1fr", lg: "1fr" }}
-        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-        gap="20px"
-        p="20px"
-        flexGrow={1}
-      >
-        <Markdown markdown={markdown} setMarkdown={setMarkdown} />
-        <Preview markdown={markdown} />
-      </SimpleGrid>
-    </VStack>
+    <EditorProvider value={context}>
+      {context.isPreviewMode ? (
+        <Suspense fallback={<Loading />}>
+          <Preview />
+        </Suspense>
+      ) : (
+        <Writing />
+      )}
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 py-6">
+        <Password />
+        <div aria-hidden="true" className="sm:grow" />
+        <ModeToggler />
+        <Submit />
+      </div>
+    </EditorProvider>
   );
-});
-
-Editor.displayName = "Editor";
+};

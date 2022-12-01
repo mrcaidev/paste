@@ -1,15 +1,15 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
-export default function Document() {
-  return (
-    <Html lang="en">
-      <Head>
-        <meta name="description" content="Markdown pastebin" />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
-}
+const Document = () => (
+  <Html lang="en">
+    <Head>
+      <link rel="icon" href="/logo.svg" />
+    </Head>
+    <body className="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+      <Main />
+      <NextScript />
+    </body>
+  </Html>
+);
+
+export default Document;

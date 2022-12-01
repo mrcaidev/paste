@@ -1,36 +1,21 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { useMemo } from "react";
 import { parseMarkdown } from "src/utils/markdown";
+import { useEditor } from "./store";
 
-interface Props {
-  markdown: string;
-}
+const Preview = () => {
+  const { title, content } = useEditor();
 
-export const Preview = ({ markdown }: Props) => {
-  const bg = useColorModeValue("gray.200", "gray.800");
-  const linkColor = useColorModeValue("blue.700", "blue.300");
+  const isEmpty = !title && !content;
+  const html = useMemo(() => parseMarkdown(content), [content]);
 
-  const html = { __html: parseMarkdown(markdown) };
-
-  return (
-    <Box
-      as="article"
-      dangerouslySetInnerHTML={html}
-      h="100%"
-      p="10px 30px"
-      bg={bg}
-      shadow="lg"
-      rounded="lg"
-      overflow="auto"
-      sx={{
-        "& a": {
-          color: linkColor,
-          "&:hover": {
-            textDecor: "underline",
-          },
-        },
-      }}
-    />
+  return isEmpty ? (
+    <p className="grow grid place-items-center">Nothing pasted yet.</p>
+  ) : (
+    <article className="grow article">
+      <h1>{title || "No Title"}</h1>
+      <section dangerouslySetInnerHTML={{ __html: html }} />
+    </article>
   );
 };
 
-Preview.displayName = "Preview";
+export default Preview;

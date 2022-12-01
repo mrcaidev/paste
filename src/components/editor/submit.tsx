@@ -1,67 +1,57 @@
-import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { memo, useState } from "react";
-import { FaPaperPlane } from "react-icons/fa";
-import { PastePostResponse } from "src/interfaces/api.interface";
+import { FiLoader, FiUploadCloud } from "react-icons/fi";
+import { toast } from "react-toastify";
+import { Button } from "../button";
+import { useEditor } from "./store";
 
-interface Props {
-  markdown: string;
-}
-
-export const Submit = memo(({ markdown }: Props) => {
-  const toast = useToast();
+export const Submit = () => {
+  const { title, content, password, isSubmitting, dispatch } = useEditor();
   const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const pasteMarkdown = async () => {
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/paste", {
-        method: "POST",
-        body: JSON.stringify({ content: markdown }),
-        headers: { "Content-Type": "application/json" },
-      });
-      const { message, data }: PastePostResponse = await res.json();
+  const handleClick = async () => {
+    const infoToast = toast.info("Submitting...");
+    dispatch({ type: "isSubmitting", payload: true });
 
-      if (!res.ok || data === null) {
-        toast({
-          title: "Error",
-          description: message,
-          status: "error",
-        });
-        return;
-      }
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      body: JSON.stringify({ title, content, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const { message, url } = await res.json();
 
-      toast({
-        title: "Success",
-        description: "Document has been pasted",
-        status: "success",
-      });
-      router.push(data.url);
-    } catch (e) {
-      toast({
-        title: "Error",
-        description: String(e),
-        status: "error",
-      });
-    } finally {
-      setIsSubmitting(false);
+    dispatch({ type: "isSubmitting", payload: false });
+    toast.dismiss(infoToast);
+
+    if (!res.ok) {
+      toast.error(message ?? "Sorry, something went wrong.");
+      return;
     }
+
+    if (!url) {
+      toast.error("Sorry, the URL of paste is not found.");
+      return;
+    }
+
+    toast.success("Success! You will be redirected to your paste.");
+    router.push(url);
   };
 
   return (
     <Button
-      colorScheme="green"
-      size={{ base: "sm", md: "md" }}
-      leftIcon={<Icon as={FaPaperPlane} />}
-      onClick={pasteMarkdown}
-      disabled={markdown === "" || isSubmitting}
-      isLoading={isSubmitting}
-      loadingText="Submitting..."
+      color="green"
+      disabled={content.length === 0 || isSubmitting}
+      onClick={handleClick}
     >
+      {isSubmitting ? (
+        <FiLoader
+          size="16"
+          aria-hidden="true"
+          className="animate-spin [animation-duration:2s]"
+        />
+      ) : (
+        <FiUploadCloud size="16" aria-hidden="true" />
+      )}
       Submit
     </Button>
   );
-});
-
-Submit.displayName = "Submit";
+};

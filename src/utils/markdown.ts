@@ -1,13 +1,10 @@
-import hljs from "highlight.js";
 import { marked } from "marked";
 
-marked.setOptions({
-  highlight: (code, lang) => {
-    const language = hljs.getLanguage(lang)?.name ?? "plaintext";
-    return hljs.highlight(code, { language }).value;
-  },
-});
+const renderer = new marked.Renderer();
+renderer.link = (href, title, text) => {
+  return `<a href="${href}" title="${title}" target="_blank" rel="noreferrer">${text}</a>`;
+};
 
-export function parseMarkdown(markdown: string) {
-  return marked.parse(markdown);
+export function parseMarkdown(text: string) {
+  return marked(text);
 }
